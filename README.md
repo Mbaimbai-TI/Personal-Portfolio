@@ -26,4 +26,4 @@ This portfolio is a responsive, single-page web application designed following c
 
 ### **🚀 How to View:**
 This portfolio is live and viewable via GitHub Pages:
-[]
+[https://ti25034321.github.io/Personal-Portfolio/]
