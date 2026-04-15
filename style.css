@@ -1,3 +1,6 @@
+/* HCI Principle: Aesthetic and Minimalist Design
+   Consistent color variables ensure visual harmony throughout.
+   High contrast cyan/magenta on dark background meets WCAG AA standard. */
 :root {  
     --charcoal: #1a1a2e;  
     --charcoal-light: #16213e;  
@@ -18,7 +21,7 @@
 }  
   
 html {  
-    scroll-behavior: smooth;  
+    scroll-behavior: smooth; /* HCI Principle: Natural mapping - smooth scroll gives users spatial awareness of page structure */
 }  
   
 body {  
@@ -30,6 +33,89 @@ body {
     position: relative;  
 }  
   
+/* ============================================
+   SKIP LINK (Accessibility)
+   ============================================ */
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    background: var(--cyan);
+    color: var(--charcoal);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 9999;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+/* ============================================
+   INLINE STYLE REPLACEMENTS
+   ============================================ */
+
+/* Replaces inline style on Academic Background h3 */
+.subsection-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    color: var(--white);
+    border-bottom: 3px solid var(--cyan);
+    padding-bottom: 1rem;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Replaces style="margin-bottom: 3rem;" on education-grid */
+.education-grid--spaced {
+    margin-bottom: 3rem;
+}
+
+/* Replaces style="margin-top: 2rem;" on section-subtitle */
+.section-subtitle--spaced-top {
+    margin-top: 2rem;
+}
+
+/* Replaces inline h4 styles for Tools / Soft Skills */
+.tools-subheading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Replaces inline style on soft skills skill-list */
+.soft-skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* ============================================
+   FOCUS STYLES (HCI - keyboard accessibility)
+   ============================================ */
+
+/* HCI Principle: Accessibility and User Control
+   Focus outlines ensure keyboard-only users can navigate the site.
+   Meets WCAG 2.1 success criterion 2.4.7 (Focus Visible). */
+.cta-button:focus-visible,
+.contact-link:focus-visible,
+.nav-link:focus-visible,
+.hamburger:focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: 3px;
+}
+
 @media (hover: hover) and (pointer: fine) {  
     body {  
         cursor: none;  
@@ -109,7 +195,10 @@ body {
 /* ============================================  
    NAVIGATION  
    ============================================ */  
-  
+
+/* HCI Principle: Visibility of System Status
+   Fixed navbar ensures users always know where they are.
+   Active link highlighting provides clear location feedback. */
 .navbar {  
     position: fixed;  
     top: 0;  
@@ -162,7 +251,7 @@ body {
   
 .nav-link:hover,  
 .nav-link.active {  
-    color: var(--cyan);  
+    color: var(--cyan); /* HCI Principle: Feedback - colour change confirms user interaction */
 }  
   
 .nav-link::after {  
@@ -184,7 +273,9 @@ body {
 /* ============================================  
    HAMBURGER MENU  
    ============================================ */  
-  
+
+/* HCI Principle: Consistency and Standards
+   Hamburger icon is a universally recognised mobile navigation pattern. */
 .hamburger {  
     display: none;  
     flex-direction: column;  
@@ -399,11 +490,46 @@ section:nth-child(odd) {
   
 .section-title {  
     font-family: 'Space Grotesk', sans-serif;  
-    font-size: 2.5rem;  
+    font-size: 3rem;  
     font-weight: 700;  
     text-align: center;  
     margin-bottom: 3rem;  
     color: var(--white);  
+}  
+
+.section-subtitle {  
+    font-family: 'Space Grotesk', sans-serif;  
+    font-size: 1.8rem;  
+    font-weight: 700;  
+    margin-bottom: 1.5rem;  
+    color: var(--white);  
+    display: flex;  
+    align-items: center;  
+    gap: 0.5rem;  
+}  
+
+.section-subtitle::before {  
+    content: '';  
+    width: 4px;  
+    height: 1.8rem;  
+    background: linear-gradient(135deg, var(--cyan), var(--magenta));  
+    border-radius: 2px;  
+}
+
+.center-subsection-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    color: var(--white);
+    border-bottom: 3px solid var(--cyan);
+    padding-bottom: 1rem;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }  
   
 .accent-cyan {  
@@ -455,6 +581,7 @@ section:nth-child(odd) {
     transition: var(--transition);  
 }  
   
+/* HCI Principle: Affordance - hover lift and glow signals cards are interactive */
 .education-card:hover {  
     border-color: var(--cyan);  
     box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);  
@@ -538,150 +665,6 @@ section:nth-child(odd) {
   
   
 /* ============================================  
-   MATHEMATICAL THINKING SECTION  
-   ============================================ */  
-  
-.math-grid {  
-    display: grid;  
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  
-    gap: 2rem;  
-    max-width: 1000px;  
-    margin: 0 auto;  
-}  
-  
-.math-card {  
-    background: rgba(22, 33, 62, 0.5);  
-    border: 1px solid rgba(0, 217, 255, 0.2);  
-    padding: 2rem;  
-    border-radius: 1rem;  
-    text-align: center;  
-    transition: var(--transition);  
-    position: relative;  
-    overflow: hidden;  
-}  
-  
-.math-card::before {  
-    content: '';  
-    position: absolute;  
-    top: 0;  
-    left: 0;  
-    right: 0;  
-    bottom: 0;  
-    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 0, 110, 0.1));  
-    opacity: 0;  
-    transition: var(--transition);  
-    z-index: -1;  
-}  
-  
-.math-card:hover {  
-    border-color: var(--cyan);  
-    transform: translateY(-10px);  
-    box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);  
-}  
-  
-.math-card:hover::before {  
-    opacity: 1;  
-}  
-  
-.math-symbol {  
-    font-size: 3rem;  
-    margin-bottom: 1rem;  
-    opacity: 0.2;  
-    transition: var(--transition);  
-}  
-  
-.math-card:hover .math-symbol {  
-    opacity: 1;  
-    color: var(--cyan);  
-    transform: scale(1.2);  
-    text-shadow: 0 0 20px rgba(0, 217, 255, 0.6);  
-}  
-  
-.math-card h3 {  
-    font-size: 1.3rem;  
-    margin-bottom: 1rem;  
-    font-weight: 600;  
-    color: var(--white);  
-}  
-  
-.math-card p {  
-    color: var(--gray-300);  
-    line-height: 1.6;  
-}  
-  
-/* ============================================  
-   COMPUTER SCIENCE SECTION  
-   ============================================ */  
-  
-.cs-grid {  
-    display: grid;  
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  
-    gap: 2rem;  
-    max-width: 1000px;  
-    margin: 0 auto;  
-}  
-  
-.cs-card {  
-    background: rgba(22, 33, 62, 0.5);  
-    border: 1px solid rgba(255, 0, 110, 0.2);  
-    padding: 2rem;  
-    border-radius: 1rem;  
-    text-align: center;  
-    transition: var(--transition);  
-    position: relative;  
-    overflow: hidden;  
-}  
-  
-.cs-card::before {  
-    content: '';  
-    position: absolute;  
-    top: 0;  
-    left: 0;  
-    right: 0;  
-    bottom: 0;  
-    background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(0, 217, 255, 0.1));  
-    opacity: 0;  
-    transition: var(--transition);  
-    z-index: -1;  
-}  
-  
-.cs-card:hover {  
-    border-color: var(--magenta);  
-    transform: translateY(-10px);  
-    box-shadow: 0 20px 40px rgba(255, 0, 110, 0.2);  
-}  
-  
-.cs-card:hover::before {  
-    opacity: 1;  
-}  
-  
-.cs-symbol {  
-    font-size: 3rem;  
-    margin-bottom: 1rem;  
-    opacity: 0.2;  
-    transition: var(--transition);  
-}  
-  
-.cs-card:hover .cs-symbol {  
-    opacity: 1;  
-    color: var(--magenta);  
-    transform: scale(1.2);  
-    text-shadow: 0 0 20px rgba(255, 0, 110, 0.6);  
-}  
-  
-.cs-card h3 {  
-    font-size: 1.3rem;  
-    margin-bottom: 1rem;  
-    font-weight: 600;  
-    color: var(--white);  
-}  
-  
-.cs-card p {  
-    color: var(--gray-300);  
-    line-height: 1.6;  
-}  
-  
-/* ============================================  
    OLYMPIAD SECTION  
    ============================================ */  
   
@@ -757,127 +740,6 @@ section:nth-child(odd) {
 }  
   
 /* ============================================  
-   SIGMA ACADEMY SECTION  
-   ============================================ */  
-  
-.sigma-content {  
-    max-width: 900px;  
-    margin: 0 auto;  
-}  
-  
-.sigma-content > p {  
-    text-align: center;  
-    font-size: 1.1rem;  
-    margin-bottom: 2rem;  
-    color: var(--gray-300);  
-}  
-  
-.sigma-grid {  
-    display: grid;  
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  
-    gap: 2rem;  
-}  
-  
-.sigma-card {  
-    background: rgba(22, 33, 62, 0.5);  
-    border: 1px solid rgba(0, 217, 255, 0.2);  
-    padding: 1.5rem;  
-    border-radius: 1rem;  
-    transition: var(--transition);  
-}  
-  
-.sigma-card:hover {  
-    border-color: var(--cyan);  
-    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);  
-}  
-  
-.sigma-card h3 {  
-    font-size: 1.2rem;  
-    margin-bottom: 1rem;  
-    font-weight: 600;  
-}  
-  
-.sigma-card ul {  
-    list-style: none;  
-    padding-left: 0;  
-}  
-  
-.sigma-card li {  
-    color: var(--gray-300);  
-    margin-bottom: 0.5rem;  
-    padding-left: 1.5rem;  
-    position: relative;  
-}  
-  
-.sigma-card li::before {  
-    content: '▸';  
-    position: absolute;  
-    left: 0;  
-    color: var(--yellow);  
-}  
-  
-/* ============================================  
-   .DEV INITIATIVE SECTION  
-   ============================================ */  
-  
-.dev-content {  
-    max-width: 900px;  
-    margin: 0 auto;  
-}  
-  
-.dev-content > p {  
-    text-align: center;  
-    font-size: 1.1rem;  
-    margin-bottom: 2rem;  
-    color: var(--gray-300);  
-}  
-  
-.dev-grid {  
-    display: grid;  
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  
-    gap: 2rem;  
-}  
-  
-.dev-card {  
-    background: rgba(22, 33, 62, 0.5);  
-    border: 1px solid rgba(0, 217, 255, 0.2);  
-    padding: 1.5rem;  
-    border-radius: 1rem;  
-    transition: var(--transition);  
-}  
-  
-.dev-card:hover {  
-    border-color: var(--cyan);  
-    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);  
-    transform: translateY(-5px);  
-}  
-  
-.dev-card h3 {  
-    font-size: 1.2rem;  
-    margin-bottom: 1rem;  
-    font-weight: 600;  
-}  
-  
-.dev-card ul {  
-    list-style: none;  
-    padding-left: 0;  
-}  
-  
-.dev-card li {  
-    color: var(--gray-300);  
-    margin-bottom: 0.5rem;  
-    padding-left: 1.5rem;  
-    position: relative;  
-}  
-  
-.dev-card li::before {  
-    content: '▸';  
-    position: absolute;  
-    left: 0;  
-    color: var(--yellow);  
-}  
-  
-/* ============================================  
    PROJECTS SECTION  
    ============================================ */  
   
@@ -906,7 +768,17 @@ section:nth-child(odd) {
     box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);  
     transform: translateY(-10px);  
 }  
-  
+
+.project-tools {
+    color: var(--yellow);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: rgba(255, 214, 10, 0.1);
+    border-radius: 0.5rem;
+    border-left: 3px solid var(--yellow);
+} 
+
 .project-card h3 {  
     color: var(--cyan);  
     font-size: 1.3rem;  
@@ -939,44 +811,6 @@ section:nth-child(odd) {
     text-align: center;  
     color: var(--gray-400);  
     padding: 2rem;  
-}  
-  
-/* ============================================  
-   MENTORSHIP SECTION  
-   ============================================ */  
-  
-.mentorship-grid {  
-    display: grid;  
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  
-    gap: 2rem;  
-    max-width: 1000px;  
-    margin: 0 auto;  
-}  
-  
-.mentorship-card {  
-    background: rgba(22, 33, 62, 0.5);  
-    border: 1px solid rgba(0, 217, 255, 0.2);  
-    padding: 2rem;  
-    border-radius: 1rem;  
-    transition: var(--transition);  
-    text-align: center;  
-}  
-  
-.mentorship-card:hover {  
-    border-color: var(--cyan);  
-    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);  
-    transform: translateY(-5px);  
-}  
-  
-.mentorship-card h3 {  
-    font-size: 1.2rem;  
-    margin-bottom: 1rem;  
-    font-weight: 600;  
-}  
-  
-.mentorship-card p {  
-    color: var(--gray-300);  
-    line-height: 1.6;  
 }  
   
 /* ============================================  
@@ -1212,6 +1046,47 @@ section:nth-child(odd) {
     }  
 }  
   
+/* ============================================
+   REDUCED MOTION (Accessibility / HCI)
+   ============================================ */
+
+/* HCI Principle: User Control and Freedom + Accessibility
+   Respects OS-level reduced motion setting for users with
+   vestibular disorders, epilepsy, or motion sensitivity.
+   Disables all animations without breaking layout or content. */
+@media (prefers-reduced-motion: reduce) {
+    .floating-symbol,
+    .scroll-indicator,
+    .cursor-dot,
+    .cursor-follower,
+    .hero-title,
+    .cta-button,
+    .nav-link,
+    .education-card,
+    .project-card,
+    .skill-tag {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    #backgroundCanvas {
+        display: none;
+    }
+
+    .floating-symbols-container {
+        display: none;
+    }
+
+    .scroll-indicator {
+        animation: none;
+    }
+}
+
 /* ============================================  
    RESPONSIVE DESIGN  
    ============================================ */  
@@ -1349,4 +1224,4 @@ section:nth-child(odd) {
     .contact-links {  
         flex-direction: column;  
     }  
-}  
+}
